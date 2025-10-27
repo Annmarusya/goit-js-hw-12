@@ -1,7 +1,11 @@
+
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+const gallery = document.querySelector(".gallery");
 const loader = document.querySelector(".loader");
+const loadMoreBtn = document.querySelector(".load-more-btn"); 
+
 const lightbox = new SimpleLightbox('.gallery a', {
     captions: true,
     captionSelector: 'img',
@@ -10,8 +14,8 @@ const lightbox = new SimpleLightbox('.gallery a', {
     captionPosition: 'bottom',
     captionDelay: 250,
 });
+
 export function createGallery(images) {
-    const gallery = document.querySelector(".gallery");
     const markup = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => `
         <li class="gallery-item">
             <a href="${largeImageURL}" class="gallery-link">
@@ -25,16 +29,38 @@ export function createGallery(images) {
             </div>
         </li>
     `).join("");
-    gallery.innerHTML = markup; 
+    gallery.insertAdjacentHTML("beforeend", markup);
     lightbox.refresh();
 }
+
 export function clearGallery() {
-    const gallery = document.querySelector(".gallery");
     gallery.innerHTML = "";
 }
+
 export function showLoader() {
     loader.classList.remove("hidden");
 }
+
 export function hideLoader() {
     loader.classList.add("hidden");
+}
+
+export function showLoadMoreButton() {
+    loadMoreBtn.classList.remove("hidden");
+}
+
+export function hideLoadMoreButton() {
+    loadMoreBtn.classList.add("hidden");
+}
+
+// Функція для плавного прокручування сторінки
+export function smoothScroll() {
+    const firstGalleryItem = gallery.firstElementChild;
+    if (firstGalleryItem) {
+        const itemHeight = firstGalleryItem.getBoundingClientRect().height;
+        window.scrollBy({
+            top: itemHeight * 2,
+            behavior: "smooth",
+        });
+    }
 }
