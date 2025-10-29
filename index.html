@@ -3,32 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Powerful image search through Pixabay API. Find quality photos with just a few clicks!"
+    />
     <title>Image Search</title>
     <script type="module" crossorigin src="/goit-js-hw-12/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-xwsNXkQR.js">
     <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/vendor-DumFYO8Z.css">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-Bxvakht0.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-AcMH1Zt6.css">
   </head>
   <body>
-    <form class="form">
-      <label>
-        <input
-          type="text"
-          name="search-text"
-          placeholder="Search images..."
-          required
-        />
-      </label>
-      <button type="submit">Search</button>
-    </form>
+    <div class="container">
+      <header class="header">
+        <h1 class="header-title">🔍 Image Search</h1>
+        <p class="header-description">
+          Find millions of quality images from Pixabay database. Simply enter
+          your query and enjoy the results!
+        </p>
+      </header>
 
-    <ul class="gallery"></ul>
+      <form class="form" id="searchForm">
+        <div class="form-wrapper">
+          <label class="form-label">
+            <input
+              type="text"
+              name="search-text"
+              class="form-input"
+              placeholder="Enter search query..."
+              required
+              autocomplete="off"
+            />
+          </label>
+          <button type="submit" class="form-button">
+            <span class="button-text">Search</span>
+            <span class="button-icon">🔎</span>
+          </button>
+        </div>
+      </form>
 
-    <div class="button-container">
-      <button type="button" class="load-more-btn hidden">Load more</button>
+      <div class="loader-wrapper">
+        <div class="loader hidden"></div>
+      </div>
+
+      <ul class="gallery"></ul>
+
+      <div class="button-container">
+        <button type="button" class="load-more-btn hidden">Load more</button>
+      </div>
     </div>
-
-    <div class="loader hidden"><span class="loader hidden"></span></div>
 
   </body>
 </html>
