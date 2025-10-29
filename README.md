@@ -1,113 +1,95 @@
-# Vanilla App Template
+# Image Search
 
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+Image search app using Pixabay API. Simple and clean interface for finding
+images.
 
-## Створення репозиторію за шаблоном
+## What it is
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проекту. Для цього натисни на кнопку `«Use this template»` і
-обери опцію `«Create a new repository»`, як показано на зображенні.
+This is an image search application. You can search for images through Pixabay,
+view them in full size, and load more if needed. Everything is simple - black
+and white design, nothing extra.
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+## Features
 
-На наступному етапі відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся, що репозиторій публічний, після чого натисни
-кнопку `«Create repository from template»`.
+- **Image search** - Enter any query and find relevant images from Pixabay
+  database
+- **Full size view** - Click on any image to open it in a lightbox gallery for
+  detailed viewing
+- **Load more** - Button to load additional images when there are more results
+  available
+- **Responsive design** - Works on phone, tablet, and desktop
+- **Image statistics** - Shows likes, views, comments, and downloads for each
+  image
+- **Notifications** - Error messages and info notifications for better user
+  experience
+- **Loading indicator** - Visual feedback during API requests
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+## Technologies used
 
-Після того, як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+- **Vite** - Fast development build tool
+- **Axios** - HTTP client for API requests
+- **SimpleLightbox** - Lightbox library for viewing images in full size
+- **iziToast** - Nice notification library
+- **Vanilla JS** - No frameworks, pure JavaScript
+- **CSS3** - Styling with animations and transitions
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+## Project structure
 
-Проскроливши сторінку до самого кінця, в секції `«Workflow permissions»` обери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проекту.
+Main files:
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+- `src/main.js` - Main file with search logic and event handlers
+- `src/js/pixabay-api.js` - Pixabay API integration, handles API requests
+- `src/js/render-functions.js` - Functions for rendering gallery, managing UI
+  elements
+- `src/css/base.css` - Main styles and layout
+- `src/index.html` - HTML markup
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів та папок
-репозиторію-шаблону. Далі працюй з ним, як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби коміти та відправляй
-їх на GitHub.
+## How to use
 
-## Підготовка до роботи
+1. Enter a search query in the search field (e.g., "cat", "nature", "city")
+2. Click "Search" button or press Enter
+3. Click on any image to view it in full size
+4. If there are more results, click "Load more" to load additional images
 
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проекту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши в терміналі команду `npm run dev`.
-4. Перейдіть у браузері за адресою
-   [http://localhost:5173](http://localhost:5173). Ця сторінка буде автоматично
-   перезавантажуватись після збереження змін у файли проекту.
+## Implementation details
 
-## Файли і папки
+- **Gallery clearing** - When you search for something new, the gallery clears
+  and shows new results
+- **Pagination** - 15 images per page, loads more on request
+- **Loading states** - Loading indicator appears during API requests so you know
+  something is happening
+- **Smooth scrolling** - When loading more images, page scrolls smoothly to show
+  new content
+- **Error handling** - If nothing found or connection issues, you get
+  notifications instead of silent failures
+- **Button visibility** - "Load more" button only appears when there are
+  actually more results to load
 
-- Файли розмітки компонентів сторінки повинні лежати в папці `src/partials` та
-  імпортуватись до файлу `index.html`. Наприклад, файл з розміткою хедера
-  `header.html` створюємо у папці `partials` та імпортуємо в `index.html`.
-- Файли стилів повинні лежати в папці `src/css` та імпортуватись до HTML-файлів
-  сторінок. Наприклад, для `index.html` файл стилів називається `index.css`.
-- Зображення додавай до папки `src/img`. Збирач оптимізує їх, але тільки при
-  деплої продакшн версії проекту. Все це відбувається у хмарі, щоб не
-  навантажувати твій комп'ютер, тому що на слабких компʼютерах це може зайняти
-  багато часу.
+## API
 
-## Деплой
+Uses Pixabay API. Settings:
 
-Продакшн версія проекту буде автоматично збиратися та деплоїтись на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пуша або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` змінити значення прапора `--base=/<REPO>/`, для команди `build`,
-замінивши `<REPO>` на назву свого репозиторію, та відправити зміни на GitHub.
+- 15 images per page
+- Photos only (no illustrations)
+- Horizontal orientation
+- Safe search enabled
 
-```json
-"build": "vite build --base=/<REPO>/",
-```
+## Design
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+Made a simple black and white design:
 
-![GitHub Pages settings](./assets/repo-settings.png)
+- Dark gradient background
+- Smooth hover animations
+- Shadow cards for images
+- Minimalist style
 
-### Статус деплою
+Everything is responsive - on mobile images are in one column, on tablet in two
+columns, on desktop in multiple columns.
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+## License
 
-- **Жовтий колір** - виконується збірка та деплой проекту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, збірки чи деплою сталася помилка.
+ISC
 
-Більш детальну інформацію про статус можна переглянути натиснувши на іконку, і в
-вікні, що випадає, перейти за посиланням `Details`.
+---
 
-![Deployment status](./assets/deploy-status.png)
-
-### Жива сторінка
-
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною на вкладці `Settings` > `Pages` в налаштуваннях репозиторію.
-Наприклад, ось посилання на живу версію для цього репозиторію
-
-[https://goitacademy.github.io/vanilla-app-template/](https://goitacademy.github.io/vanilla-app-template/).
-
-Якщо відкриється порожня сторінка, переконайся, що у вкладці `Console` немає
-помилок пов'язаних з неправильними шляхами до CSS та JS файлів проекту
-(**404**). Швидше за все у тебе неправильне значення прапора `--base` для
-команди `build` у файлі `package.json`.
-
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пуша у гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) із файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується та
-   проходить лінтинг та збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн версія файлів проекту
-   відправляється у гілку `gh-pages`. В іншому випадку, у лозі виконання скрипта
-   буде вказано в чому проблема.
+Made with vanilla JavaScript, no frameworks

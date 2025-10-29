@@ -59,14 +59,11 @@ async function handleSubmit(e) {
         
         createGallery(data.hits); 
         
+        // Show "Load more" button only if there are more results to load
         if (totalHits > imagesPerPage) {
             showLoadMoreButton();
-        } else {
-            iziToast.info({
-                position: 'bottomCenter',
-                message: "We're sorry, but you've reached the end of search results.",
-            });
         }
+        // If there are few results, just don't show the button, but don't notify about the end
     } catch (error) {
         console.error("Error:", error);
         iziToast.error({
@@ -95,7 +92,7 @@ async function handleLoadMore() {
 
         const loadedImages = currentPage * imagesPerPage;
 
-        if (loadedImages >= totalHits) {
+        if (loadedImages >= totalHits || newImages.length === 0) {
             hideLoadMoreButton();
             iziToast.info({
                 position: 'bottomCenter',
